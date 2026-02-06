@@ -144,7 +144,7 @@
 You are more than welcome to openly discuss these problems. 
 You don't need to hand in these problems.
 The home assignments are graded only through quizzes. 
-Questions with [For Fun] mark will not enter into the quizzes. 
+Questions with [For Fun] mark will not enter the quizzes. 
 
 \section*{Home assignment 1}
 
@@ -198,6 +198,56 @@ Enters in the quizzes during the week 3: 26 January.
 
 Given that $s_{0} = 2$, $s_{-1} = -2$, $b_{0} = 0.5$, $\ell_{0} = 4$  
 decompose $y_1 = 3$, $y_2 = 6$, $y_3= 4$ into trend, seasonal component and random shocks.
+
+\end{enumerate}
+
+\section*{Home assignment 1}
+
+Enters in the quizzes during the week 5: 9 February.
+
+
+\begin{enumerate}
+\item Consider an \( MA(2) \) process defined by the equation:
+\[
+y_t = 5 + u_t + 2u_{t-1} + 4u_{t-2},
+\]
+where \((u_t)\) is a white noise process with variance \(\Var(u_t) = \sigma^2\).
+
+    \begin{enumerate}
+        \item Find the expected value \(\E(y_t)\).
+        \item Find the autocorrelation function \(\rho(k) = \Corr(y_t, y_{t-k})\).
+        \item Is the process \((y_t)\) stationary?
+        \item Construct a 95\% confidence interval for \(y_{101}\), given \(u_{100} = 1\) and \(u_{99} = -1\).
+    \end{enumerate}
+
+\item Consider an \( MA(1) \) process defined by the equation:
+\[
+y_t = \mu + u_t + b u_{t-1},
+\]
+where \((u_t)\) is a white noise process with zero mean and variance \(\sigma^2\).
+
+Assume we observe the following three consecutive realizations of this process:
+\[
+y_1 = 2, \quad y_2 = 0.5, \quad y_3 = 1.5.
+\]
+
+    \begin{enumerate}
+          \item Using the method of moments, set up the system of equations by equating $\E(y_t)$, $\E(y_t^2)$ and $\E(y_t y_{t-1})$ with their sample counterparts.
+          Derive estimates for the parameters $\mu$, \(\b\) and \(\sigma^2\).
+
+        \item Based on your estimates, is the process invertible? Justify your answer.
+    \end{enumerate}
+
+\item Suppose it is known that the autocorrelation function of an MA process takes the following values:
+\[
+\rho(1) = -\frac{13}{19}, \quad \rho(2) = -\frac{91}{190}, \quad \rho(k) = 0 \text{ for } k \ge 3.
+\]
+
+ \begin{enumerate}
+        \item What is the order of this MA process?
+        \item Is there enough information to recover all parameters of the model generating this process?
+        \item Recover the parameters if possible.
+    \end{enumerate}
 
 \end{enumerate}
 
