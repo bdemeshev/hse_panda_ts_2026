@@ -1,0 +1,220 @@
+% arara: xelatex
+\documentclass[12pt]{article}
+
+% \usepackage{physics}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{tikzducks}
+
+\usepackage{tikz} % картинки в tikz
+\usetikzlibrary{shapes, arrows, positioning}
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+\usepackage{url} % to use \url{link to web}
+
+\usepackage{xcolor}   % для цвета текста
+\usepackage{ulem}     % для зачёркивания (\sout)
+
+\usepackage[symbol]{footmisc}
+
+\newcommand{\smallduck}{\begin{tikzpicture}[scale=0.3]
+    \duck[
+        cape=black,
+        hat=black,
+        mask=black
+    ]
+    \end{tikzpicture}}
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{Time Series}
+\chead{}
+\rhead{Midterm online, 2026-04-16}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{tcolorbox} % рамочки!
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos - печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+\setcounter{MaxMatrixCols}{20}
+% by crazy default pmatrix supports only 10 cols :)
+
+
+\usepackage{fontspec}
+\usepackage{libertine}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+
+\usetikzlibrary{automata, positioning, arrows.meta, calc, shapes.multipart}
+
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+% \setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+% \newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+% \setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\card}{card}
+
+\DeclareMathOperator{\Convex}{Convex}
+\DeclareMathOperator{\plim}{plim}
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hb}{\hat{\beta}}
+\newcommand{\dPois}{\mathrm{Pois}}
+\newcommand{\dUnif}{\mathrm{Unif}}
+
+
+
+
+
+\begin{document}
+
+% \textcolor{red}{\textbf{FINAL SALE}}: Every problem will bring you 10 \sout{99.99} points!
+
+% Scratch paper price: \sout{10 points per sheet only} \textcolor{red}{\textbf{FREE\footnote[1]{Members only deal!}}}!
+% Date: 2026-03-06, the start of the third plague pandemic in the US in 1900.
+
+\begin{enumerate}
+\item   The $ETS(AAdN)$ model is given by the system
+  \[
+  \begin{cases}
+  u_t  \sim \cN(0; 16) \\
+  b_t = 0.5 b_{t-1} + 0.8 u_t \\
+  \ell_t = \ell_{t-1} + 0.5 b_{t-1} + 0.8 u_t \\
+  y_t = \ell_{t-1} + 0.5 b_{t-1} + u_t \\
+  \end{cases}
+  \]
+  with $\ell_{100} = 30$ and $b_{100} = 2$.
+\begin{enumerate}
+  \item {[5]} Find the 95\% predictive interval for $y_{102}$.
+  \item {[5]} Find conditional probability $\P(y_{102} < 40  \mid \ell_{100}, b_{100})$ in terms of the standard normal distribution function.
+\end{enumerate}
+\item   The semi-annual $y_t$ is modelled by $ETS(AAA)$ process:    
+    \[
+    \begin{cases}
+        u_t \sim \cN(0; 16) \\
+        b_t = b_{t-1} + 0.8 u_t \\
+        s_t = s_{t-2} + 0.1 u_t \\
+        \ell_t = \ell_{t-1} + b_{t-1} + 0.5 u_t \\
+        y_t = \ell_{t-1} + b_{t-1} + s_{t-2} + u_t \\
+    \end{cases}    
+    \]
+with $\ell_0 = 20$, $b_0 = 1$, $s_0 = 5$ and $s_{-1} = -5$.
+
+Decompose first two observations $y_1 = 25$ and $y_2 = 20$ into trend, seasonal and error components.
+
+\item Consider $MA(1)$ process $y_t = 3 + u_t + 4 u_{t-1}$, where $u_t$ is a white noise process with variance $10$.
+\begin{enumerate}
+    \item {[5]} Find $\E(y_t)$, $\Var(y_t)$, $\Cov(y_t, y_s)$.
+    \item {[5]} Consider and independent copy $(y'_t)$ of $(y_t)$ (all expected value, variance and autocovariances are the same).
+    If possible classify $s_t = y'_t + y_{t-1}$ as $MA(q)$ process. 
+\end{enumerate}
+
+\item Consider the equation
+\(
+y_t = 0.5 y_{t-1} + u_t + 0.4 u_{t-1},
+\)
+where \( u_t \) is a white noise process with variance $\sigma^2$.
+\begin{enumerate}
+    \item {[1]} How many non-stationary solutions does this equation have?
+    \item {[3]} How many stationary solutions of $MA(\infty)$ form with respect to $(u_t)$ does this equation have? Find all solutions, if possible.
+    \item {[2]} Rewrite all stationary solutions in $AR(\infty)$ form with respect to $(u_t)$, if possible.
+    \item {[4]} Find $\Var(y_t)$ for all stationary solutions.
+\end{enumerate}
+
+\item Consider the stationary solution of the equation
+\[
+y_t = 0.8 y_{t-1} - 0.5 y_{t-2} + u_t, 
+\]
+where $(u_t)$ is a white noise.
+\begin{enumerate}
+    \item {[3]} Check the existence of stationary solution.
+    \item {[4]} Find the values of ACF \( \rho_1, \rho_2, \rho_3 \).
+    \item {[3]} Find the values of PACF \( \phi_{11}, \phi_{22}, \phi_{33}\).
+\end{enumerate}
+
+\item You know that $y_t$ is a stationary $ARMA(p, q)$ process. 
+\begin{enumerate}
+    \item Is it possible that autocorrelation $\rho_{10} = 0.5$ but all other autocorrelations ($\rho_k$ for $k \geq 1$ and $k\neq 10$) are zero?
+    If possible provide an equation of such a process. 
+
+    \item Is it possible that partial autocorrelation $\phi_{10, 10} = 0.5$ but all other partial autocorrelations ($\phi_{k,k}$ for $k \geq 1$ and $k\neq 10$) are zero?
+    If possible provide an equation of such a process. 
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+
